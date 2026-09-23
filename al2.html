@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="icon" href="po2.jpg" type="image/x-icon">
+        <title>MU(Marvel Universe)</title>
+        <style>
+            body {
+                background-image: url(lkj.jpg);
+                background-size: cover; 
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-position: center;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                padding: 20px;
+            }
+
+            p {
+                background-color: rgba(75, 72, 72, 0.9);
+                border-radius: 10px;
+                padding: 5px 15px;
+                display: inline-block;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                color: #ffffff; 
+                margin-top: 30px;
+            }
+
+           
+            .upload-btn-wrapper {
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+            .btn-upload {
+                border: 2px solid #cebfbf;
+                color: white;
+                background-color: rgba(59, 5, 5, 0.8);
+                padding: 10px 20px;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+            .btn-upload:hover {
+                background-color: rgb(120, 10, 10);
+            }
+            #uploadFoto {
+                display: none; 
+            }
+
+            .info-hapus {
+                color: #ffcccc;
+                font-size: 13px;
+                margin-bottom: 15px;
+                font-style: italic;
+            }
+
+            .tcw {
+                width: 100%;
+                max-width: 1500px;
+                overflow-x: auto; 
+                margin-top: 15px;
+                margin-bottom: 30px;
+                border-radius: 8px;
+                border: 2px solid #494949;
+                background-color: rgba(59, 5, 5, 0.5);
+                padding: 10px;
+            }
+
+            .glt {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .glt td {
+                border: 2px solid #424242;
+                padding: 15px;
+                vertical-align: middle;
+                text-align: center;
+                min-width: 150px; 
+            }
+
+            .tcw::-webkit-scrollbar,
+            .gallery-container::-webkit-scrollbar {
+                height: 4px;
+                border-radius: 5px;
+            }
+
+            .tcw::-webkit-scrollbar-track,
+            .gallery-container::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.4);
+                border-radius: 5px;
+            }
+
+            .tcw::-webkit-scrollbar-thumb,
+            .gallery-container::-webkit-scrollbar-thumb {
+                background: #cebfbf;
+                border-radius: 5px;
+            }
+
+            img.gallery-img {
+                width: 100px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 8px;
+                transition: transform 0.5s ease;  
+                cursor: pointer;
+            }
+
+            img.gallery-img:hover {
+                transform: scale(1.15);
+            }
+            
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                justify-content: center;
+                align-items: center;
+            }
+
+            .modal img {
+                max-width: 80%;
+                max-height: 80%;
+                width: auto;
+                height: auto;
+                border-radius: 10px;
+                transform: none;
+            }
+            
+            .close-btn {
+                position: absolute;
+                top: 10px;
+                right: 30px;
+                color: white;
+                font-size: 40px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>    
+        
+        
+        <div class="upload-btn-wrapper">
+            <button class="btn-upload" onclick="document.getElementById('uploadFoto').click()">+ Tambah Foto Karakter</button>
+            <input type="file" id="uploadFoto" accept="image/*">
+        </div>
+        <div class="info-hapus">Klik kanan pada foto untuk menghapusnya dari galeri</div>
+
+        <div class="tcw">
+             <table class="glt" id="tabelGaleri">
+                
+                <tr>
+                    <td><img src="spi.jpg" class="gallery-img" title="spiderman" alt="Gambar SPI 1"></td>
+                    <td><img src="spider.jpg" class="gallery-img" title="spiderman miles morales" alt="Gambar SPI 3"></td>
+                    <td><img src="jj.jpg" class="gallery-img" title="spiderman tom holland" alt="Gambar SPI 4"></td>
+                    <td><img src="spooder.jpg" class="gallery-img" title="spooderman" alt="Gambar SPI 5"></td>
+                    <td><img src="noir.jpg" class="gallery-img" title="spiderman noir" alt="Gambar SPI 6"></td>
+                </tr>
+                
+                <tr>
+                    <td><img src="andre.jpg" class="gallery-img" title="sipderman andrew" alt="Gambar SPI 7"></td>
+                    <td><img src="tobey.jpg" class="gallery-img" title="spiderman tobey" alt="Gambar SPI 8"></td>
+                    <td><img src="trio.jpg" class="gallery-img" title="trio spider" alt="Gambar SPI 9"></td>
+                    <td><img src="ben.jpg" class="gallery-img" title="uncle ben parker" alt="Gambar SPI 10"></td>
+                    <td><img src="iron.jpg" class="gallery-img" title="tony stark" alt="gambar Iron 1"></td>
+                </tr>
+                
+                <tr>
+                    <td><img src="hulk.jpg" class="gallery-img" title="hulk buster" alt="gambar Iron 2"></td>
+                    <td><img src="zom1.jpg" class="gallery-img" title="zombie ironman" alt="gambar Iron 3"></td>
+                    <td><img src="zom2.jpg" class="gallery-img" title="zombie ironman" alt="gambar Iron 4"></td>
+                    <td><img src="iron3.jpg" class="gallery-img" title="ironman 3" alt="gambar Iron 5"></td>
+                    <td><img src="co.jpg" class="gallery-img" title="comic" alt="gambar Iron 6"></td>
+                </tr>
+                
+                <tr>
+                    <td><img src="cof.jpg" class="gallery-img" title="edit" alt="gambar Iron 7"></td>
+                    <td><img src="last.jpg" class="gallery-img" title="i am ironman" alt="gambar Iron 8"></td>
+                    <td><img src="stro.jpg" class="gallery-img" alt="gambar Iron 1"></td>
+                    <td><img src="str.jpg" class="gallery-img" alt="gambar Iron 2"></td>
+                </tr>
+            </table>
+        </div>
+
+        <p><a href="file:///C:/Users/DELL/OneDrive/Documents/vscode/belajar/dpk.html" style="color:black">back</a></p>
+           
+        
+        <div id="imgModal" class="modal">
+            <span class="close-btn">&times;</span>
+            <img id="modalImg" src="" alt="Gambar Diperbesar">
+        </div>
+                
+                
+        <script>
+            const modal = document.getElementById('imgModal');
+            const modalImg = document.getElementById('modalImg');
+            const closeBtn = document.querySelector('.close-btn');
+            const tabelGaleri = document.getElementById('tabelGaleri');
+            const uploadFoto = document.getElementById('uploadFoto');
+
+           
+            document.addEventListener("DOMContentLoaded", muatFotoTersimpan);
+
+            
+            tabelGaleri.addEventListener('click', function(e) {
+                if (e.target && e.target.classList.contains('gallery-img')) {
+                    if (e.target.src) {
+                        modal.style.display = "flex";
+                        modalImg.src = e.target.src;
+                    }
+                }
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target !== modalImg) {
+                    modal.style.display = "none";
+                }
+            });
+
+           
+            tabelGaleri.addEventListener('contextmenu', function(e) {
+                if (e.target && e.target.classList.contains('gallery-img')) {
+                    e.preventDefault(); 
+                    
+                    const namaFoto = e.target.title || "Foto ini";
+                    const konfirmasi = confirm(`Apakah Anda yakin ingin menghapus "${namaFoto}"?`);
+                    
+                    if (konfirmasi) {
+                        e.target.closest('td').remove(); 
+                        rapikanTabel(); 
+                        simpanKeLocalStorage(); 
+                    }
+                }
+            });
+
+           
+            function rapikanTabel() {
+                const semuaKolom = Array.from(tabelGaleri.getElementsByTagName('td'));
+                tabelGaleri.innerHTML = ""; 
+                
+                let barisBaru;
+                semuaKolom.forEach((td, indeks) => {
+                    if (indeks % 5 === 0) {
+                        barisBaru = document.createElement('tr');
+                        tabelGaleri.appendChild(barisBaru);
+                    }
+                    barisBaru.appendChild(td);
+                });
+            }
+
+           
+            uploadFoto.addEventListener('change', function(event) {
+                const file = event.target.files[0]; 
+                
+                if (file) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        tambahFotoKeTabel(e.target.result, file.name.split('.').slice(0, -1).join('.'));
+                        simpanKeLocalStorage(); // Simpan ke memori setelah berhasil upload
+                    }
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            
+            function tambahFotoKeTabel(srcGambar, judulGambar) {
+                let semuaBaris = tabelGaleri.getElementsByTagName('tr');
+                
+                if (semuaBaris.length === 0) {
+                    const trBaru = document.createElement('tr');
+                    tabelGaleri.appendChild(trBaru);
+                    semuaBaris = tabelGaleri.getElementsByTagName('tr');
+                }
+                
+                let barisAktif = semuaBaris[semuaBaris.length - 1];
+                let jumlahKolom = barisAktif.getElementsByTagName('td').length;
+                
+                if (jumlahKolom >= 5) {
+                    const trBaru = document.createElement('tr');
+                    tabelGaleri.appendChild(trBaru);
+                    barisAktif = trBaru;
+                }
+                
+                const tdBaru = document.createElement('td');
+                const imgBaru = document.createElement('img');
+                
+                imgBaru.src = srcGambar;
+                imgBaru.className = 'gallery-img';
+                imgBaru.title = judulGambar;
+                imgBaru.alt = 'Gambar Baru';
+                
+               
+                imgBaru.dataset.custom = "true"; 
+                
+                tdBaru.appendChild(imgBaru);
+                barisAktif.appendChild(tdBaru);
+            }
+
+            
+            function simpanKeLocalStorage() {
+                const fotoKustom = [];
+                // Hanya mengambil gambar baru yang memiliki data-custom="true"
+                const semuaFotoBaru = document.querySelectorAll('.gallery-img[data-custom="true"]');
+                
+                semuaFotoBaru.forEach(img => {
+                    fotoKustom.push({
+                        src: img.src,
+                        title: img.title
+                    });
+                });
+                
+                
+                localStorage.setItem('galeriMarvelKustom', JSON.stringify(fotoKustom));
+            }
+
+            
+            function muatFotoTersimpan() {
+                const dataTersimpan = localStorage.getItem('galeriMarvelKustom');
+                if (dataTersimpan) {
+                    const fotoKustom = JSON.parse(dataTersimpan);
+                    fotoKustom.forEach(foto => {
+                        tambahFotoKeTabel(foto.src, foto.title);
+                    });
+                }
+            }
+        </script>
+    </body>
+</html>
